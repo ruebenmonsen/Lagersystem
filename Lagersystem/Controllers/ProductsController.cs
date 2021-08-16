@@ -156,5 +156,21 @@ namespace Lagersystem.Controllers
         {
             return _context.Product.Any(e => e.Id == id);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Search(string category)
+        {
+            var model = _context.Product
+                .Where(p => p.Category.StartsWith(category))
+                .Select(p => new ProductViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    Count = p.Count
+                });
+
+            return View(nameof(Index), await model.ToListAsync());
+        }
     }
 }

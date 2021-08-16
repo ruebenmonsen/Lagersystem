@@ -28,6 +28,14 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
                         </li>
                     </ul>
+                    <form asp-action="Search" method="get">
+                        <div class="input-group">
+                            <input type="text" name="category" class="form-control" placeholder="Search on Category">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-outline-secondary" id="button-addon2">Search</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </nav>
